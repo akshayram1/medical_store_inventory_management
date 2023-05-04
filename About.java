@@ -12,7 +12,7 @@ class About extends JFrame
 	About()
 	{
 		jf=new JFrame();
-		img=new ImageIcon("images//rn.jpg");
+		img = new ImageIcon("images//61804.jpg");
 		b=new JLabel("",img,JLabel.CENTER);
 		b.setBounds(0,0,800,600);
 		jf.add(b);
@@ -33,27 +33,27 @@ class About extends JFrame
 		l2.setBounds(50,150,600,40);
 		b.add(l2);
 
-		l3 = new JLabel("Mr.Akshay Uttam Chame.  ");
+		l3 = new JLabel("Mrs. Vaishanavi Arthamwar ");
 		l3.setFont(new Font("Times New Roman",Font.BOLD,20));
 		l3.setBounds(225,200,900,40);l3.setForeground(Color.black);
 		b.add(l3);
 		
-		l8 = new JLabel("Mr.Aryan Amol Lad.");
+		l8 = new JLabel("Mr.  Akshay Chame");
 		l8.setFont(new Font("Times New Roman",Font.BOLD,20));
 		l8.setBounds(225,220,900,40);l8.setForeground(Color.black);
 		b.add(l8);
 		
-		l9 = new JLabel("Mr.Soham Sujeet Waghmare.");
+		l9 = new JLabel("Mr.  Rohit Jyoti");
 		l9.setFont(new Font("Times New Roman",Font.BOLD,20));
 		l9.setBounds(225,240,900,40);l9.setForeground(Color.black);
 		b.add(l9);
 		
-		l10 = new JLabel("Mr.Ajay Prakashrao Yache.");
+		l10 = new JLabel("Mr.  Mayur Khadde");
 		l10.setFont(new Font("Times New Roman",Font.BOLD,20));
 		l10.setBounds(225,260,900,40);l10.setForeground(Color.black);
 		b.add(l10);
 
-		l4 = new JLabel("~ Guided By Mrs.Galshetwar madam.");
+		l4 = new JLabel("~ Guided By Prof. Vaishali Savale");
 		l4.setFont(new Font("Times New Roman",Font.BOLD,20));l4.setForeground(Color.black);
 		l4.setBounds(480,290,800,40);
 		b.add(l4);
@@ -91,4 +91,3 @@ class About extends JFrame
 
 	}
 }
-
