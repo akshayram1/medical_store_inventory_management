@@ -10,7 +10,7 @@ public class MainMenu extends JFrame implements ActionListener
     ImageIcon img;
 	JMenuBar mbar;
 	JMenu m1,m2,m3,m4,m5;
-	JMenuItem m1_1,m1_2,m1_3,m1_4,m1_5,m2_1,m2_2,m2_3,m2_4,m2_5,m3_1,m3_2,m4_1,m5_1;
+	JMenuItem m1_1,m1_2,m1_3,m1_4,m1_5,m2_1,m2_2,m2_3,m2_4,m2_5,m3_1,m3_2,m3_3,m4_1,m5_1;
 	JLabel l1,l2,l3,l4,l5;
 	JButton b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16;
 
@@ -175,6 +175,9 @@ public class MainMenu extends JFrame implements ActionListener
 		m3_2 = new JMenuItem("Suplier wise medicine Report",new ImageIcon("images//report.png"));
 		m3.add(m3_2);
 
+		m3_3 = new JMenuItem("Suplier wise medicine Report",new ImageIcon("images//report.png"));
+		m3.add(m3_3);
+
 		m4=new JMenu("About");
 		mbar.add(m4);
 		m4_1 = new JMenuItem("About System",new ImageIcon("images//help.png"));
@@ -199,6 +202,7 @@ public class MainMenu extends JFrame implements ActionListener
 
 		m3_1.addActionListener(this);
 		m3_2.addActionListener(this);
+		m3_3.addActionListener(this);
 		m4_1.addActionListener(this);
 		m5_1.addActionListener(this);
 
@@ -265,6 +269,11 @@ public class MainMenu extends JFrame implements ActionListener
 		  else if(ae.getSource()==m3_2 || ae.getSource()==b12)
 		 {
 		   new SupplierWiseMedList();
+		 }
+
+		 else if(ae.getSource()==m3_3 || ae.getSource()==b13)
+		 {
+		   new medicine_report();
 		 }
 
 		else if(ae.getSource()==m4_1 || ae.getSource()==b14)

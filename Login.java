@@ -22,7 +22,7 @@ class Login extends JFrame implements ActionListener
 	{
         
 		jf=new JFrame();
-		//img=new ImageIcon("images//a.jpg");
+		img=new ImageIcon("images//61804.jpg");
 		b=new JLabel("",img,JLabel.CENTER);
 		b.setBounds(0,0,800,600);
 		jf.add(b);

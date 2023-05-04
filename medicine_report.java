@@ -5,13 +5,28 @@ import javax.swing.table.*;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.time.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
-public class MedicineList extends JFrame {
+public class medicine_report extends JFrame {
   JFrame jf = new JFrame();
   JLabel b;
   ImageIcon img;
   JLabel ln;
   Connection con;
+  Date date1;
+  GregorianCalendar calendar;
+  String strDate;
   PreparedStatement ps;
   Statement stmt;
   ResultSet rs;
@@ -19,7 +34,7 @@ public class MedicineList extends JFrame {
   JTable tabGrid = new JTable(model);
   JScrollPane scrlPane = new JScrollPane(tabGrid);
 
-  public MedicineList() {
+  public medicine_report() {
     jf = new JFrame();
     img = new ImageIcon("images//61804.jpg");
     b = new JLabel("", img, JLabel.CENTER);
@@ -27,7 +42,7 @@ public class MedicineList extends JFrame {
     jf.add(b);
     // setVisible(true);
     b.setLayout(null);
-    ln = new JLabel("Stock Of Medicines");
+    ln = new JLabel("Expired Medicine");
     ln.setFont(new Font("Arial", Font.BOLD, 25));
     ln.setForeground(Color.BLACK);
     ln.setHorizontalAlignment(JLabel.CENTER);
@@ -41,16 +56,12 @@ public class MedicineList extends JFrame {
 
     model.addColumn("Batchno");
     model.addColumn("Name");
-    model.addColumn("Company");
     model.addColumn("Quantity");
     model.addColumn("Type");
     model.addColumn("Purcahasedate");
     model.addColumn("Expirydate");
     model.addColumn("Purchaseprice");
-    model.addColumn("Saleprice");
     model.addColumn("Rackno");
-    model.addColumn("Supplierid");
-    model.addColumn("suppliername");
     int r = 0;
     try {
 
@@ -59,14 +70,23 @@ public class MedicineList extends JFrame {
       System.out.println("Connected to database.");
       stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
       rs = stmt.executeQuery("select * from medicine");
+      Date date1 = new Date();
+      Calendar calendar = new GregorianCalendar();
+      // Calendar.setTime(date1);
+      String strDate = calendar.get(Calendar.MONTH) + "-" + (calendar.get(Calendar.YEAR));
+      SimpleDateFormat formatter = new SimpleDateFormat("MM-yyyy");
+      Date date = formatter.parse(strDate);
       while (rs.next()) {
-        model.insertRow(r++,
-            new Object[] { rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(7),
-                rs.getString(5), rs.getString(6), rs.getString(8), rs.getString(9), rs.getString(10),
-                rs.getString(11), rs.getString(12) });
-
+        String sDate1 = rs.getString(5);
+        Date date2 = formatter.parse(sDate1);
+        int result = date.compareTo(date2);
+        if (result > 0) {
+          model.insertRow(r++, new Object[] { rs.getString(1), rs.getString(2), rs.getString(4), rs.getString(7),
+              rs.getString(6), rs.getString(5), rs.getString(8), rs.getString(10) });
+        } else {
+          continue;
+        }
       }
-
       con.close();
     } catch (SQLException se) {
       System.out.println(se);
@@ -85,6 +105,6 @@ public class MedicineList extends JFrame {
   }
 
   public static void main(String args[]) {
-    new MedicineList();
+    new medicine_report();
   }
 }

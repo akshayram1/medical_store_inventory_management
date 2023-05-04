@@ -1,39 +1,36 @@
-// Java Program to demonstrate the working of date picker
-import javafx.application.Application;
-import javafx.scene.control.Button;
-import javafx.scene.layout.*;
-import javafx.stage.Stage;
-import java.time.LocalDate;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.event.ActionEvent;
-import javafx.scene.control.*;
-import javafx.scene.control.Alert.AlertType;
-//main class
-public class datepickerpgm extends Application
-{
-// Application starts  here
-public void start( Stage st )
-{
-// set stage title
-    st.setTitle("creation of the date picker : ") ;
-    // Tile pane creation
-    TilePane tp = new TilePane() ;
-    // Date picker creation
-    DatePicker dp = new DatePicker();
-    // add both label and button
-    tp.getChildren().add(dp);
-    // scene creation
-    Scene sc = new Scene(tp, 200, 200);
-    // setting of the scene
-    st.setScene(sc);
-    //display the stage
-    st.show();
-}
-//main method
-public static void main(String args[])
-    {
-    // application launches here
-        launch(args);
+// Write a datepicker program using frame
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import java.text.*;
+import javax.swing.*;
+import javax.swing.event.*;
+import javax.swing.text.*;
+import javax.swing.text.DateFormatter;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
+import javax.swing.text.NumberFormatter;
+
+
+class datepickerpgm extends JFrame{
+    
+    public datepickerpgm(){
+        super("Date Picker");
+        JFormattedTextField dateField = new JFormattedTextField(new DateFormatter(new SimpleDateFormat("dd/MM/yyyy")));
+        dateField.setValue(new Date());
+        add(dateField);
+
+        // Write a date picker prg
+        
+        
+        setSize(400, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new FlowLayout());
+        setVisible(true);
     }
+    public static void main(String[] args) {
+        datepickerpgm dp = new datepickerpgm();
+
+    }
+
 }
